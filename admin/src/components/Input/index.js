@@ -15,6 +15,8 @@ import StrikeThrough from "@strapi/icons/StrikeThrough";
 import styled from "styled-components";
 
 import cyrToLat from "./cyr-to-lat";
+import umlauts from "./umlauts";
+import frAccents from "./fr-accents";
 
 const Index = ({ name, value, intlLabel, attribute }) => {
   const dateObj = new Date();
@@ -53,6 +55,8 @@ const Index = ({ name, value, intlLabel, attribute }) => {
 
   function slugify(str) {
     str = str.toLowerCase();
+    str = umlauts(str);
+    str = frAccents(str);
     return cyrToLat(str)
       .replace(/[^a-zA-Z0-9]/g, ' ')
       .trim()
